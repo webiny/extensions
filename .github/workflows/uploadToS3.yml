@@ -17,14 +17,7 @@ jobs:
         run: |
           aws s3 sync . s3://${{ secrets.WEBINY_EXAMPLES_S3_BUCKET_NAME }}/v6 --delete --region ${{ secrets.AWS_REGION }} \
               --exclude ".*" \
-              --exclude "blog*" \
-              --exclude "create-custom-application*" \
-              --exclude "headlesscms-*" \
-              --exclude "integrate-tailwind-css" \
               --exclude "node_modules*" \
               --exclude "package.json" \
               --exclude "README.md" \
-              --exclude "storage-backup*" \
-              --exclude "use-existing-amazon-vpc-advanced-usage*" \
-              --exclude "webiny-v4*" \
               --exclude "yarn.lock"
