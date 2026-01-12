@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://webiny.com/schemas/extension.schema.json",
+  "title": "Webiny Extension Configuration",
+  "description": "Schema for Webiny extension.jsonc configuration files",
+  "type": "object",
+  "required": ["name", "type"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The unique name of the extension",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of extension",
+      "enum": ["admin", "api", "cli", "infra", "core"]
+    },
+    "webinyConfigTsx": {
+      "type": "object",
+      "description": "Configuration for how this extension integrates with webiny.config.tsx",
+      "properties": {
+        "imports": {
+          "type": "array",
+          "description": "Array of imports to add to the user's webiny.config.tsx",
+          "items": {
+            "type": "object",
+            "required": ["specifier", "path"],
+            "properties": {
+              "specifier": {
+                "type": "string",
+                "description": "The named import specifier (e.g., 'AdminLogo')",
+                "pattern": "^[A-Z][a-zA-Z0-9]*$"
+              },
+              "path": {
+                "type": "string",
+                "description": "The relative path to import from (e.g., './extensions/AdminLogo/AdminLogo.js')",
+                "pattern": "^\\.\\/.*\\.(js|ts|jsx|tsx)$"
+              }
+            },
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "component": {
+          "type": "object",
+          "description": "Component to render in the Extensions component",
+          "required": ["name"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The component name to render (should match one of the imported specifiers)",
+              "pattern": "^[A-Z][a-zA-Z0-9]*$"
+            },
+            "props": {
+              "type": "object",
+              "description": "Props to pass to the component (optional)",
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "additionalNotes": {
+      "type": "object",
+      "description": "Additional notes and messages for the extension",
+      "properties": {
+        "messages": {
+          "type": "array",
+          "description": "Array of messages to display to users",
+          "items": {
+            "type": "object",
+            "required": ["text"],
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "Message text (can include %s placeholders for variables)"
+              },
+              "variables": {
+                "type": "array",
+                "description": "Variables to substitute into the message text",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "packageJson": {
+      "type": "object",
+      "description": "Additional package.json properties to merge",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

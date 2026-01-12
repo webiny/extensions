@@ -1,14 +1,23 @@
 {
+  "$schema": "../schemas/extension.schema.json",
   "name": "admin-logo",
   "type": "admin",
-
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "AdminLogo",
+        "path": "./extensions/AdminLogo/AdminLogo.js"
+      }
+    ],
+    "component": {
+      "name": "AdminLogo"
+    }
+  },
   "additionalNotes": {
     "messages": [
       {
         "text": "check out the %s file for more information",
-        "variables": [
-          "extensions/cognitoFederationWithA0/README.md"
-        ]
+        "variables": ["extensions/cognitoFederationWithA0/README.md"]
       }
     ]
   },
