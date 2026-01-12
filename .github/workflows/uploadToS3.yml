@@ -2,7 +2,7 @@ name: Upload Extensions to Amazon S3
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   upload:
     name: Upload extensions to Amazon S3
