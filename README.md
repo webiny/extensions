@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./webiny-readme-resources/webiny.png" width="150" height="150" />
+    <img src="./assets/webiny.png" width="150" height="150" />
     <h3>Webiny is a developer-friendly platform for building serverless applications.</h3>
     <p>Webiny makes it easier for everyone to get into serverless. Here are a couple of awesome examples to get you started!</p>
 </div>
