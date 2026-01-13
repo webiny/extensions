@@ -12,16 +12,5 @@
     "component": {
       "name": "AdminLogo"
     }
-  },
-  "additionalNotes": {
-    "messages": [
-      {
-        "text": "check out the %s file for more information",
-        "variables": ["extensions/cognitoFederationWithA0/README.md"]
-      }
-    ]
-  },
-  "packageJson": {
-    // Add package.json properties here if needed.
   }
 }
