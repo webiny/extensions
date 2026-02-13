@@ -1,7 +1,6 @@
 {
   "$schema": "../schemas/extension.schema.json",
   "name": "admin-logo",
-  "type": "admin",
   "webinyConfigTsx": {
     "imports": [
       {

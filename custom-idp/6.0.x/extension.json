@@ -1,0 +1,34 @@
+{
+  "$schema": "../schemas/extension.schema.json",
+  "name": "custom-idp",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "CustomIdp",
+        "path": "./extensions/CustomIdp/CustomIdp.js"
+      }
+    ],
+    "component": {
+      "name": "CustomIdp",
+      "props": {
+        "secretKey": "my-secret-key"
+      }
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "This extension requires a %s to be configured in %s.",
+        "variables": ["secretKey", "webiny.config.tsx"]
+      },
+      {
+        "text": "Remove the default %s extension from %s, to avoid conflicts.",
+        "variables": ["<Cognito />", "webiny.config.tsx"]
+      },
+      {
+        "text": "Learn more about the extension in %s.",
+        "variables": ["extensions/CustomIdp/README.md"]
+      }
+    ]
+  }
+}
