@@ -5,7 +5,7 @@
     "imports": [
       {
         "specifier": "CustomIdp",
-        "path": "./extensions/CustomIdp/CustomIdp.js"
+        "path": "./extensions/customIdp/CustomIdp.js"
       }
     ],
     "component": {
@@ -18,7 +18,7 @@
   "additionalNotes": {
     "messages": [
       {
-        "text": "This extension requires a %s to be configured in %s.",
+        "text": "This extension requires a %s to be configured in %s. You can define it inline, or configure an environment variable in .env, and pass it to the extension.",
         "variables": ["secretKey", "webiny.config.tsx"]
       },
       {

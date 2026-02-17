@@ -10,13 +10,13 @@ In your Webiny project, run:
 yarn webiny extension custom-idp
 ```
 
-This will install the extension in `extensions/CustomIdp`, and add it to your `webiny.config.tsx` file.
+This will install the extension in `extensions/customIdp`, and add it to your `webiny.config.tsx` file.
 
 Configuration:
 
 - configure a `secretKey` prop in `webiny.configx.tsx` (you will most like want to pass it via an environment variable)
-- configure your IDP endpoints in `extensions/CustomIdp/admin/Extension.tsx`
-- adjust identity mapping and `isApplicable` logic in `extensions/CustomIdp/api/CustomIdentityProvider.ts`
+- configure your IDP endpoints in `extensions/customIdp/admin/Extension.tsx`
+- adjust identity mapping and `isApplicable` logic in `extensions/customIdp/api/CustomIdentityProvider.ts`
 
 ---
 

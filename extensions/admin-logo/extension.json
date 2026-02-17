@@ -5,7 +5,7 @@
     "imports": [
       {
         "specifier": "AdminLogo",
-        "path": "./extensions/AdminLogo/AdminLogo.js"
+        "path": "./extensions/adminLogo/AdminLogo.js"
       }
     ],
     "component": {
