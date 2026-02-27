@@ -3,7 +3,7 @@ import { AddPreviewPane } from "./AddPreviewPane";
 import { LivePreviewEditor } from "./LivePreviewEditor";
 import { ContentEntryEditorConfig } from "webiny/admin/cms/entry/editor";
 
-export const AddLivePreview = () => {
+export const AdminLivePreview = () => {
   return (
     <>
       <AddPreviewPane />
