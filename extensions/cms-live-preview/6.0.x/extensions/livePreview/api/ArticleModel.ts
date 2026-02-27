@@ -90,18 +90,6 @@ class ArticleModelImpl implements ModelFactory.Interface {
               }),
               layout: [["title"], ["actionLabel"], ["actionUrl"], ["image"]]
             })
-            .template("yu774a27dmnfndxjekdje", {
-              name: "Text&Image Block",
-              gqlTypeName: "Textwithimageblock",
-              icon: { type: "icon", name: "fas/image" },
-              description: "Text with Image block",
-              fields: f => ({
-                title: f.text().renderer("textInput").label("Title"),
-                content: f.richText().renderer("lexicalEditor").label("Content"),
-                image: f.file().imagesOnly().renderer("file").label("Image")
-              }),
-              layout: [["title"], ["content"], ["image"]]
-            })
             .template("42xjmo2vb2bgoz3e35xgs", {
               name: "Rich text field",
               gqlTypeName: "Richtextfield",
