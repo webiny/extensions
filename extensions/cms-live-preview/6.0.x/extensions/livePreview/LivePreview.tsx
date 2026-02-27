@@ -1,16 +1,6 @@
 import React from "react";
-import { AddPreviewPane } from "./admin/AddPreviewPane";
-import { LivePreviewEditor } from "./admin/LivePreviewEditor";
-import { ContentEntryEditorConfig } from "webiny/admin/cms/entry/editor";
+import { Admin } from "webiny/extensions";
 
-export default function LivePreview() {
-    return (
-        <>
-            <AddPreviewPane />
-            <LivePreviewEditor />
-            <ContentEntryEditorConfig>
-                <ContentEntryEditorConfig.Width value={"90%"} modelIds={["article"]} />
-            </ContentEntryEditorConfig>
-        </>
-    );
-}
+export const LivePreview = () => {
+  return <Admin.Extension src={"/extensions/LivePreview/AddLivePreview.tsx"} />;
+};
