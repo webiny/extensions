@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "live-preview",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "LivePreview",
+        "path": "./extensions/livePreview/LivePreview.js"
+      }
+    ],
+    "component": {
+      "name": "LivePreview"
+    }
+  }
+}
