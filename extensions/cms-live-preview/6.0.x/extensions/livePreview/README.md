@@ -6,4 +6,4 @@ With the Live Preview extension, you can instantly see changes in your content a
 
 # Overview
 
-This extension has been tested with a Next.js application, which you can `
+This extension has been tested with a Next.js application, which you can clone from https://github.com/webiny/learn-webiny-nextjs-app/tree/live-preview-ext.
