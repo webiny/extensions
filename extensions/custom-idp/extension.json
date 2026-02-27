@@ -27,7 +27,7 @@
       },
       {
         "text": "Learn more about the extension in %s.",
-        "variables": ["extensions/CustomIdp/README.md"]
+        "variables": ["extensions/customIdp/README.md"]
       }
     ]
   }
