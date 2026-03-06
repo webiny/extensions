@@ -4,7 +4,10 @@ class TokenRefreshGatewayImpl implements Abstraction.Interface {
     constructor(private config: CustomIdpConfig.Interface) {}
 
     async refresh(refreshToken: string): Promise<Abstraction.Tokens> {
-        const response = await fetch(`${this.config.refreshUrl}?token=${refreshToken}`, {
+        const url = new URL(this.config.refreshUrl);
+        url.searchParams.set("token", refreshToken);
+
+        const response = await fetch(url.toString(), {
             headers: { "Content-Type": "application/json" }
         });
 
