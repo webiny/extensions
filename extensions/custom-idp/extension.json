@@ -15,6 +15,15 @@
       }
     }
   },
+  "packageJson": {
+    "dependencies": {
+      "jsonwebtoken": "^9.0.3",
+      "jwt-decode": "^4.0.0"
+    },
+    "devDependencies": {
+      "@types/jsonwebtoken": "9.0.10"
+    }
+  },
   "additionalNotes": {
     "messages": [
       {
