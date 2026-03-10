@@ -4,12 +4,15 @@
   "webinyConfigTsx": {
     "imports": [
       {
-        "specifier": "AdminBranding",
-        "path": "./extensions/AdminBranding/AdminBranding.js"
+        "specifier": "Admin",
+        "path": "webiny/extensions"
       }
     ],
     "component": {
-      "name": "AdminBranding"
+      "name": "Admin.Extension",
+      "props": {
+        "src": "/extensions/AdminBranding/AdminBranding.tsx"
+      }
     }
   }
 }
