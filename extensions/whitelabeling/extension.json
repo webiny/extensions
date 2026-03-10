@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "whitelabeling",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "AdminBranding",
+        "path": "./extensions/AdminBranding/AdminBranding.js"
+      }
+    ],
+    "component": {
+      "name": "AdminBranding"
+    }
+  }
+}
