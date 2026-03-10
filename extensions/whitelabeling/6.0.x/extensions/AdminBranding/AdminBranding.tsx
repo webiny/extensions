@@ -13,8 +13,7 @@ const AdminBranding = () => {
                 squareLogo={<img src={squareLogo} alt={"ACME Corp"} />}
                 horizontalLogo={<img src={horizontalLogo} alt={"ACME Corp"} />}
             />
-            <Theme.Color palette={"primary"} color={"purple"} />
-            <Theme.Color palette={"neutral"} color={"light-green"} />
+            <Theme.Color palette={"primary"} color={"blue"} />
         </AdminConfig.Public>
     );
 };
