@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "cms-product-columns",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "ProductEntryListColumnsExtension",
+        "path": "./extensions/productEntryListColumns/ProductEntryListColumnsExtension.js"
+      }
+    ],
+    "component": {
+      "name": "ProductEntryListColumnsExtension"
+    }
+  }
+}
