@@ -1,3 +1,4 @@
+import React from "react";
 import { Api, Admin } from "webiny/extensions";
 
 export const ProductEntryListColumnsExtension = () => {
