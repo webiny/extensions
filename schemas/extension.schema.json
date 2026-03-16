@@ -54,6 +54,28 @@
             }
           },
           "additionalProperties": false
+        },
+        "components": {
+          "type": "array",
+          "description": "Array of components to render in the Extensions component",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The component name to render (should match one of the imported specifiers)",
+                "pattern": "^[A-Z][a-zA-Z0-9]*$"
+              },
+              "props": {
+                "type": "object",
+                "description": "Props to pass to the component (optional)",
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": false
+          },
+          "minItems": 1
         }
       },
       "additionalProperties": false
