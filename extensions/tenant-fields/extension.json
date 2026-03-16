@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "tenant-fields",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "Api",
+        "path": "webiny/extensions"
+      }
+    ],
+    "component": {
+      "name": "Api.Extension",
+      "props": {
+        "src": "/extensions/TenantModelExtension.ts"
+      }
+    }
+  }
+}
