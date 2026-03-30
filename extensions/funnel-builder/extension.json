@@ -12,6 +12,14 @@
       "name": "FunnelBuilder"
     }
   },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Learn more about the extension in %s.",
+        "variables": ["extensions/livePreview/README.md"]
+      }
+    ]
+  },
   "packageJson": {
     "dependencies": {
       "@dnd-kit/core": "^6.3.1",
