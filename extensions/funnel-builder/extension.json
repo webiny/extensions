@@ -15,6 +15,10 @@
   "additionalNotes": {
     "messages": [
       {
+        "text": "This extension requires additional dependencies. Run %s in your project root to install them.",
+        "variables": ["yarn"]
+      },
+      {
         "text": "Learn more about the extension in %s.",
         "variables": ["extensions/funnelBuilder/README.md"]
       }
