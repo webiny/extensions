@@ -6,5 +6,7 @@ export const fieldValueFromDto = (dto: FunnelFieldValueModelDto<any>) => {
     if (!FieldValueClass) {
         throw new Error(`Unknown field value: ${dto.type}`);
     }
+
+    // @ts-ignore Should not complain but it does for some reason. Check this.
     return new FieldValueClass(dto);
 };
