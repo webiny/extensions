@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "funnel-builder",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "FunnelBuilder",
+        "path": "./extensions/funnelBuilder/FunnelBuilder.js"
+      }
+    ],
+    "component": {
+      "name": "FunnelBuilder"
+    }
+  }
+}
