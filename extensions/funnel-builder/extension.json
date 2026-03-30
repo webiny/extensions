@@ -16,7 +16,7 @@
     "messages": [
       {
         "text": "Learn more about the extension in %s.",
-        "variables": ["extensions/livePreview/README.md"]
+        "variables": ["extensions/funnelBuilder/README.md"]
       }
     ]
   },
