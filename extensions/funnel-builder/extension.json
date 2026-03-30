@@ -23,7 +23,11 @@
   "packageJson": {
     "dependencies": {
       "@dnd-kit/core": "^6.3.1",
-      "@dnd-kit/sortable": "^10.0.0"
+      "@dnd-kit/sortable": "^10.0.0",
+      "object-hash": "^3.0.0"
+    },
+    "devDependencies": {
+      "@types/object-hash": "^3.0.6"
     }
   }
 }
