@@ -34,14 +34,24 @@ export const Stepper = () => {
         prevStepsRef.current = steps;
 
         if (steps.length > prevSteps.length) {
-            // A step was added — activate the newly inserted step (second-to-last, just before success).
-            const newStep = steps[steps.length - 2];
-            if (newStep) {
-                setActiveStepId(newStep.id);
+            if (!activeStepId) {
+                // No active step yet (initial mount) — activate the first step.
+                const firstStep = steps[0];
+                setActiveStepId(firstStep.id);
                 editor.executeCommand(Commands.SendPreviewMessage, {
                     type: "fub.activeStepChanged",
-                    payload: { stepId: newStep.id }
+                    payload: { stepId: firstStep.id }
                 });
+            } else {
+                // A step was added — activate the newly inserted step (second-to-last, just before success).
+                const newStep = steps[steps.length - 2];
+                if (newStep) {
+                    setActiveStepId(newStep.id);
+                    editor.executeCommand(Commands.SendPreviewMessage, {
+                        type: "fub.activeStepChanged",
+                        payload: { stepId: newStep.id }
+                    });
+                }
             }
         } else if (steps.length < prevSteps.length) {
             // A step was deleted — if it was the active one, fall back to the previous step.
@@ -57,14 +67,6 @@ export const Stepper = () => {
                     });
                 }
             }
-        } else if (steps.length && !activeStepId) {
-            // No active step yet (initial mount) — activate the first step.
-            const firstStep = steps[0];
-            setActiveStepId(firstStep.id);
-            editor.executeCommand(Commands.SendPreviewMessage, {
-                type: "fub.activeStepChanged",
-                payload: { stepId: firstStep.id }
-            });
         }
     }, [steps]);
 
