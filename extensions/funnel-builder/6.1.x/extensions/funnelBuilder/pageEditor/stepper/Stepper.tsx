@@ -8,6 +8,7 @@ import {
     useCreateElement,
     useDeleteElement,
     useDocumentEditor,
+    $selectElement,
     $deselectElement,
     Commands
 } from "webiny/admin/website-builder/page/editor";
@@ -88,12 +89,17 @@ export const Stepper = () => {
     const slotSteps = container.inputs.steps ?? [];
 
     const activateStep = (stepId: string) => {
-        setActiveStepId(stepId);
         $deselectElement(editor);
+        setActiveStepId(stepId);
         editor.executeCommand(Commands.SendPreviewMessage, {
             type: "fub.activeStepChanged",
             payload: { stepId }
         });
+
+        // Added timeout just so the auto-select looks more visually appealing. Otherwise, it looks glitchy.
+        setTimeout(() => {
+            $selectElement(editor, stepId);
+        }, 350);
     };
 
     const deleteStep = (stepElementId: string) => {
