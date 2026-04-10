@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Icon } from "webiny/admin/ui";
+import { Button, Icon, Separator, useDisclosure } from "webiny/admin/ui";
 import { ReactComponent as DeleteIcon } from "webiny/admin/icons/close.svg";
+import { ReactComponent as AddIcon } from "webiny/admin/icons/add.svg";
+import { ReactComponent as CheckIcon } from "webiny/admin/icons/check.svg";
+import { ReactComponent as ForkIcon } from "webiny/admin/icons/fork_right.svg";
 import {
     useCreateElement,
     useDeleteElement,
@@ -9,9 +12,8 @@ import {
     Commands
 } from "webiny/admin/website-builder/page/editor";
 import { useContainer } from "../useContainer.js";
-
-const iconClasses =
-    "absolute z-10 rounded-full bg-neutral-dimmed border-solid border-sm border-neutral-muted cursor-pointer fill-neutral-strong";
+import { ConditionRulesDialog } from "../components/ConditionRulesDialog";
+import type { FunnelModelDto } from "../../models/FunnelModel";
 
 const iconPosition = {
     top: -8,
@@ -24,6 +26,13 @@ export const Stepper = () => {
     const { createElement } = useCreateElement();
     const { deleteElement } = useDeleteElement();
     const [activeStepId, setActiveStepId] = useState<string | null>(null);
+
+    const {
+        open: showConditionRulesDialog,
+        close: hideConditionRulesDialog,
+        isOpen: isConditionRulesDialogOpen,
+        data: conditionRulesData
+    } = useDisclosure<FunnelModelDto>();
 
     const steps = container?.inputs.containerData?.steps ?? [];
     const prevStepsRef = useRef(steps);
@@ -91,6 +100,17 @@ export const Stepper = () => {
         deleteElement(stepElementId);
     };
 
+    const handleConditionalRulesClick = () => {
+        showConditionRulesDialog(container.inputs.containerData);
+    };
+
+    const handleConditionalRulesSubmit = (data: FunnelModelDto) => {
+        container.updateInputs(current => {
+            current.containerData = data;
+        });
+        hideConditionRulesDialog();
+    };
+
     const addStep = () => {
         createElement({
             componentName: "Fub/Step",
@@ -101,41 +121,77 @@ export const Stepper = () => {
     };
 
     return (
-        <div
-            className={"flex flex-row p-sm bg-neutral-light justify-between"}
-            data-affects-preview={"height"}
-        >
-            <div className={"flex gap-md"}>
-                {steps.map((step, index) => {
-                    const isFirstStep = index === 0;
-                    const isLastStep = index === steps.length - 1;
-                    const isSuccessStep = isLastStep;
-                    const canDelete = !isFirstStep && !isSuccessStep;
-                    const activeVariant = activeStepId === step.id ? "primary" : "secondary";
-                    const elementId = slotSteps[index]?.elementId;
+        <>
+            <div
+                className={"flex flex-row p-sm bg-neutral-light justify-between"}
+                data-affects-preview={"height"}
+            >
+                <div className={"flex items-center gap-sm"}>
+                    <span className={"uppercase font-semibold text-neutral-muted! text-sm "}>
+                        Pages
+                    </span>
+                    {steps.map((step, index) => {
+                        const isFirstStep = index === 0;
+                        const isLastStep = index === steps.length - 1;
+                        const isSuccessStep = isLastStep;
+                        const canDelete = !isFirstStep && !isSuccessStep;
+                        const activeVariant = activeStepId === step.id ? "primary" : "secondary";
+                        const elementId = slotSteps[index]?.elementId;
 
-                    return (
-                        <div className={"relative"} key={step.id}>
-                            <Button
-                                variant={activeVariant}
-                                text={step.title}
-                                className={"border-solid border-sm border-neutral-muted"}
-                                onClick={() => activateStep(step.id)}
-                            />
-                            {canDelete && elementId ? (
-                                <Icon
-                                    icon={<DeleteIcon />}
-                                    label={"Delete step"}
-                                    style={iconPosition}
-                                    onClick={() => deleteStep(elementId)}
-                                    className={iconClasses}
+                        return (
+                            <div className={"flex items-center relative gap-sm"} key={step.id}>
+                                <Button
+                                    icon={isSuccessStep && <CheckIcon />}
+                                    variant={activeVariant}
+                                    text={step.title}
+                                    onClick={() => activateStep(step.id)}
                                 />
-                            ) : null}
-                        </div>
-                    );
-                })}
+                                {canDelete && elementId ? (
+                                    <Icon
+                                        icon={<DeleteIcon />}
+                                        label={"Delete step"}
+                                        style={iconPosition}
+                                        onClick={() => deleteStep(elementId)}
+                                        className={
+                                            "absolute z-10 rounded-full bg-neutral-dimmed border-solid border-sm border-neutral-muted cursor-pointer fill-neutral-strong h-md w-md"
+                                        }
+                                    />
+                                ) : null}
+
+                                {isSuccessStep && (
+                                    <div className={"flex items-center gap-sm"}>
+                                        <Separator
+                                            variant={"strong"}
+                                            orientation={"vertical"}
+                                            className={"h-lg"}
+                                        />
+                                        <Button
+                                            icon={<AddIcon />}
+                                            text={"Add page"}
+                                            variant={"tertiary"}
+                                            onClick={addStep}
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+                <div className={"flex gap-md"}>
+                    <Button
+                        variant={"primary"}
+                        icon={<ForkIcon />}
+                        text={"Conditional rules"}
+                        onClick={handleConditionalRulesClick}
+                    />
+                </div>
             </div>
-            <Button variant={"primary"} text={"+ Add step"} onClick={addStep} />
-        </div>
+            <ConditionRulesDialog
+                open={isConditionRulesDialogOpen}
+                data={conditionRulesData!}
+                onClose={hideConditionRulesDialog}
+                onSubmit={handleConditionalRulesSubmit}
+            />
+        </>
     );
 };
