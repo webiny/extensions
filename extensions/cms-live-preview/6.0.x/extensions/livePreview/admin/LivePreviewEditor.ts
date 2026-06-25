@@ -14,6 +14,7 @@ const getWindowObject = () => {
 
 /**
  * Decorate `useContentEntryForm` hook, and notify the Live Preview when changes happen.
+ * Also dispatches a custom event with the current slug so the PreviewPane can show it.
  */
 export const LivePreviewEditor = useContentEntryForm.createDecorator(baseHook => {
   return () => {
@@ -27,6 +28,17 @@ export const LivePreviewEditor = useContentEntryForm.createDecorator(baseHook =>
 
     useEffect(() => {
       updateLivePreview(hook.entry);
+
+      // Notify the PreviewPane of the current slug and entry ID.
+      const entry = hook.entry as Record<string, any>;
+      window.dispatchEvent(
+        new CustomEvent("wby:slugChange", {
+          detail: {
+            slug: entry?.values?.slug || "",
+            entryId: entry?.id || "",
+          },
+        })
+      );
     }, [hook.entry]);
 
     return hook;
