@@ -10,8 +10,24 @@ To install the extension run the following command inside your Webiny project:
 yarn webiny extension cms-live-preview
 ```
 
-Once installed make sure to configure your NextJs/NuxtJs/Angular frontend app to render the pages. To get started clone our reference nextjs app from here: https://github.com/webiny/learn-webiny-nextjs-app/tree/live-preview-ext
-Install the dependencies and run the dev server (`yarn dev`)
+When installed, you must redeploy your API so the new content model gets registered with the system.
+```shell
+yarn webiny deploy api
+```
+
+Once deployed make sure to configure your NextJs/NuxtJs/Angular frontend app to render the pages. To get started clone our reference nextjs app from here: https://github.com/webiny/learn-webiny-nextjs-app/tree/live-preview-ext
+```shell
+git clone git@github.com:webiny/learn-webiny-nextjs-app.git
+git checkout live-preview-ext
+yarn
+```
+
+Once installed, make sure to configure the required .env variables
+```shell
+cp .env.local.example .env.local
+```
+
+Then edit and provide the actual values for the variables.
 
 
 ![Live Preview Demo](./screenshot.png)
