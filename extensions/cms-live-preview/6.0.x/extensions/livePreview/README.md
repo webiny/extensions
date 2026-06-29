@@ -18,6 +18,7 @@ yarn webiny deploy api
 Once deployed make sure to configure your NextJs/NuxtJs/Angular frontend app to render the pages. To get started clone our reference nextjs app from here: https://github.com/webiny/learn-webiny-nextjs-app/tree/live-preview-ext
 ```shell
 git clone git@github.com:webiny/learn-webiny-nextjs-app.git
+cd learn-webiny-nextjs-app
 git checkout live-preview-ext
 yarn
 ```
