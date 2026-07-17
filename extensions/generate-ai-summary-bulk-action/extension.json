@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "generate-ai-summary-bulk-action",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "GenerateAiSummaryBulkActionExtension",
+        "path": "./extensions/generateAiSummaryBulkAction/GenerateAiSummaryBulkActionExtension.js"
+      }
+    ],
+    "component": {
+      "name": "GenerateAiSummaryBulkActionExtension"
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Requires Webiny %s or newer.",
+        "variables": ["6.5.0"]
+      },
+      {
+        "text": "Requires the %s extension with a provider configured in its settings.",
+        "variables": ["AI Power Ups"]
+      },
+      {
+        "text": "The Product model is registered for demo purposes. Learn more in %s.",
+        "variables": ["extensions/generateAiSummaryBulkAction/README.md"]
+      }
+    ]
+  }
+}
