@@ -17,10 +17,6 @@
       {
         "text": "Learn more about the extension in %s.",
         "variables": ["extensions/menuBuilderField/README.md"]
-      },
-      {
-        "text": "To create a demo Menu model to try it on, run %s.",
-        "variables": ["npx tsx extensions/menuBuilderField/createMenuModel.ts <api-token>"]
       }
     ]
   }
