@@ -3,6 +3,8 @@
 A custom CMS field renderer for repeatable object fields. Instead of a stack of accordions, the
 field renders as a compact tree you drag around: up and down to reorder, sideways to nest.
 
+[See it in action](https://x.com/WebinyCMS/status/2099743551605084409).
+
 `MenuBuilderCmsRenderer.ts` registers the renderer with the CMS, so "Menu Builder" shows up in the
 Appearance tab of any object field that holds multiple values. It also declares the settings form.
 
