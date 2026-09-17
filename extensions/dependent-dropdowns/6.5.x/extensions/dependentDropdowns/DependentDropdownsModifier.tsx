@@ -24,7 +24,7 @@ import { CityCatalogue } from "./CityCatalogue.js";
  *   2. `.disabledWhen()` keeps the field closed until the catalogue arrives. Without it,
  *      "still loading" looks exactly like "this country has no cities".
  *   3. `.addAfterChange()` on country clears a city the new country doesn't have.
- *      Without it, picking Croatia + Split then switching to Germany leaves "split" in
+ *      Without it, picking Italy + Milan then switching to Germany leaves "milan" in
  *      the field: gone from the dropdown, but still submitted.
  */
 class DependentDropdownsModifierImpl implements ContentEntryFormModelModifier.Interface {

@@ -27,9 +27,10 @@ class DependentDropdownsModelImpl implements ModelFactory.Interface {
                         .text()
                         .label("Country")
                         .predefinedValues([
-                            { label: "Croatia", value: "hr" },
-                            { label: "Germany", value: "de" },
-                            { label: "United Kingdom", value: "uk" }
+                            { label: "Italy", value: "it" },
+                            { label: "United Kingdom", value: "uk" },
+                            { label: "United States", value: "us" },
+                            { label: "Germany", value: "de" }
                         ]),
                     /**
                      * No values here on purpose. The admin plugin fills them in based on

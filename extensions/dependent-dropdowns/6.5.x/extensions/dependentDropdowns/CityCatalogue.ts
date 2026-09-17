@@ -14,20 +14,25 @@ const fetchCities = async (): Promise<Record<string, CityOption[]>> => {
     await new Promise(resolve => setTimeout(resolve, 600));
 
     return {
-        hr: [
-            { label: "Zagreb", value: "zagreb" },
-            { label: "Split", value: "split" },
-            { label: "Rijeka", value: "rijeka" }
-        ],
-        de: [
-            { label: "Berlin", value: "berlin" },
-            { label: "Hamburg", value: "hamburg" },
-            { label: "Munich", value: "munich" }
+        it: [
+            { label: "Rome", value: "rome" },
+            { label: "Milan", value: "milan" },
+            { label: "Naples", value: "naples" }
         ],
         uk: [
             { label: "London", value: "london" },
             { label: "Manchester", value: "manchester" },
             { label: "Bristol", value: "bristol" }
+        ],
+        us: [
+            { label: "New York", value: "new-york" },
+            { label: "Chicago", value: "chicago" },
+            { label: "San Francisco", value: "san-francisco" }
+        ],
+        de: [
+            { label: "Berlin", value: "berlin" },
+            { label: "Hamburg", value: "hamburg" },
+            { label: "Munich", value: "munich" }
         ]
     };
 };

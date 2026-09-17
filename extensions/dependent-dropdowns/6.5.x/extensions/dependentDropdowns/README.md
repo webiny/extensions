@@ -41,8 +41,8 @@ form.field("country").addAfterChange((value, { form }) => {
    select.
 2. `.disabledWhen()` keeps the field closed until the data arrives. Without it, "still
    loading" looks exactly like "this country has no cities".
-3. `addAfterChange` on `country` clears a stale `city`. Without it, picking Croatia + Split
-   and then switching to Germany leaves `"split"` in the field — gone from the dropdown, but
+3. `addAfterChange` on `country` clears a stale `city`. Without it, picking Italy + Milan
+   and then switching to Germany leaves `"milan"` in the field — gone from the dropdown, but
    still submitted.
 
 ## Notable details
