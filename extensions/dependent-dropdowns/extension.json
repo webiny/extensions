@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "dependent-dropdowns",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "DependentDropdownsExtension",
+        "path": "./extensions/dependentDropdowns/DependentDropdownsExtension.js"
+      }
+    ],
+    "component": {
+      "name": "DependentDropdownsExtension"
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Requires Webiny %s or newer.",
+        "variables": ["6.5.0"]
+      },
+      {
+        "text": "The Store Location model is registered for demo purposes. Learn more in %s.",
+        "variables": ["extensions/dependentDropdowns/README.md"]
+      }
+    ]
+  }
+}
