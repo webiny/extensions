@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "bug-report-ai",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "Api",
+        "path": "webiny/extensions"
+      }
+    ],
+    "component": {
+      "name": "Api.Extension",
+      "props": {
+        "src": "/extensions/bugReportAi/Extension.ts"
+      }
+    }
+  },
+  "packageJson": {
+    "dependencies": {
+      "ai": "^7.0.73",
+      "zod": "4.4.3"
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Configure a model for %s in AI Power-Ups settings. Without one, reports are still filed, just in the reporter's own words.",
+        "variables": ["Bug report drafting"]
+      },
+      {
+        "text": "Learn more about the extension in %s.",
+        "variables": ["extensions/bugReportAi/README.md"]
+      }
+    ]
+  }
+}
