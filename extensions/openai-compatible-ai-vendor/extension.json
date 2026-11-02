@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "openai-compatible-ai-vendor",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "Api",
+        "path": "webiny/extensions"
+      }
+    ],
+    "component": {
+      "name": "Api.Extension",
+      "props": {
+        "src": "/extensions/openAiCompatibleVendor/Extension.ts"
+      }
+    }
+  },
+  "packageJson": {
+    "dependencies": {
+      "@ai-sdk/openai": "4.0.95"
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Requires Webiny %s or newer.",
+        "variables": ["6.5.0"]
+      },
+      {
+        "text": "Set %s to your gateway's base URL, list its models in Extension.ts, then deploy the API.",
+        "variables": ["WEBINY_API_OPENAI_COMPATIBLE_BASE_URL"]
+      },
+      {
+        "text": "Learn more about the extension in %s.",
+        "variables": ["extensions/openAiCompatibleVendor/README.md"]
+      }
+    ]
+  }
+}
