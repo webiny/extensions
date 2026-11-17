@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "anthropic-compatible-ai-vendor",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "Api",
+        "path": "webiny/extensions"
+      }
+    ],
+    "component": {
+      "name": "Api.Extension",
+      "props": {
+        "src": "/extensions/anthropicCompatibleVendor/Extension.ts"
+      }
+    }
+  },
+  "packageJson": {
+    "dependencies": {
+      "@ai-sdk/anthropic": "4.0.81"
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Requires Webiny %s or newer.",
+        "variables": ["6.5.0"]
+      },
+      {
+        "text": "Set %s to your endpoint's base URL, list its models in Extension.ts, then deploy the API.",
+        "variables": ["WEBINY_API_ANTHROPIC_COMPATIBLE_BASE_URL"]
+      },
+      {
+        "text": "Learn more about the extension in %s.",
+        "variables": ["extensions/anthropicCompatibleVendor/README.md"]
+      }
+    ]
+  }
+}
