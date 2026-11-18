@@ -75,7 +75,7 @@ class SesMailTransportFactoryImpl implements MailTransportFactory.Interface {
 
     /*
      * Configured when WEBINY_API_SES_FROM is set. Otherwise this returns null and the mailer falls
-     * back to SMTP (if its settings exist) and then to the dummy transport.
+     * back to SMTP, if its settings exist.
      *
      * No credentials here: on Lambda the SDK uses the function's IAM role, and anywhere else it
      * uses the default credential chain (AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY, a profile...).
