@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "aws-ses-mailer",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "AwsSesMailer",
+        "path": "./extensions/awsSesMailer/AwsSesMailer.js"
+      }
+    ],
+    "component": {
+      "name": "AwsSesMailer"
+    }
+  },
+  "packageJson": {
+    "dependencies": {
+      "@aws-sdk/client-sesv2": "^3.1161.0"
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Requires Webiny %s or newer.",
+        "variables": ["6.6.0"]
+      },
+      {
+        "text": "Set %s to a sender verified in SES, then deploy the API.",
+        "variables": ["WEBINY_API_SES_FROM"]
+      },
+      {
+        "text": "Learn more about the extension in %s.",
+        "variables": ["extensions/awsSesMailer/README.md"]
+      }
+    ]
+  }
+}
