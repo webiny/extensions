@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/extension.schema.json",
+  "name": "resend-mailer",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "ResendMailer",
+        "path": "./extensions/resendMailer/ResendMailer.js"
+      }
+    ],
+    "component": {
+      "name": "ResendMailer"
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Requires Webiny %s or newer.",
+        "variables": ["6.6.0"]
+      },
+      {
+        "text": "Set %s and %s, then deploy the API.",
+        "variables": ["WEBINY_API_RESEND_API_KEY", "WEBINY_API_RESEND_FROM"]
+      },
+      {
+        "text": "Learn more about the extension in %s.",
+        "variables": ["extensions/resendMailer/README.md"]
+      }
+    ]
+  }
+}
