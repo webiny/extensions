@@ -17,21 +17,27 @@ credentials on its own. Nothing secret goes into settings, environment variables
 
 ## Setup
 
-1. In `webiny.config.tsx`, render `<SesMailer />` in place of `<MailerSmtp />`. Installing the
+1. Install the extension in your Webiny project:
+
+   ```
+   yarn webiny extension mailer/ses
+   ```
+
+2. In `webiny.config.tsx`, render `<SesMailer />` in place of `<MailerSmtp />`. Installing the
    extension adds `<SesMailer />` and the `@aws-sdk/client-sesv2` dependency; remove
    `<MailerSmtp />` and its import yourself. If you keep both, SES is used while it is configured
    and SMTP is the fallback.
 
-2. Set the sender. It must belong to the verified identity:
+3. Set the sender. It must belong to the verified identity:
 
    ```
    WEBINY_API_SES_FROM="Webiny <no-reply@example.com>"
    ```
 
-3. Deploy the API (`yarn webiny deploy api`). The deploy adds the `api-ses-send-email` policy to
+4. Deploy the API (`yarn webiny deploy api`). The deploy adds the `api-ses-send-email` policy to
    the API functions' role and passes the variable to the functions.
 
-4. In the Admin app, open Settings > Mailer and send a test email. A missing permission or an
+5. In the Admin app, open Settings > Mailer and send a test email. A missing permission or an
    unverified sender only shows up when SES is called, so this is the way to check the setup.
 
 ## Environment variables

@@ -14,21 +14,27 @@ It calls Resend's HTTP API with `fetch`, so it adds no dependencies to the proje
 
 ## Setup
 
-1. In `webiny.config.tsx`, render `<ResendMailer />` in place of `<MailerSmtp />`. Installing the
+1. Install the extension in your Webiny project:
+
+   ```
+   yarn webiny extension mailer/resend
+   ```
+
+2. In `webiny.config.tsx`, render `<ResendMailer />` in place of `<MailerSmtp />`. Installing the
    extension adds `<ResendMailer />`; remove `<MailerSmtp />` and its import yourself. If you keep
    both, Resend is used while it is configured and SMTP is the fallback.
 
-2. Set the API key and the sender. The sender must be on the verified domain:
+3. Set the API key and the sender. The sender must be on the verified domain:
 
    ```
    WEBINY_API_RESEND_API_KEY=re_...
    WEBINY_API_RESEND_FROM="Webiny <no-reply@example.com>"
    ```
 
-3. Deploy the API (`yarn webiny deploy api`). The deploy passes both variables to the API
+4. Deploy the API (`yarn webiny deploy api`). The deploy passes both variables to the API
    functions.
 
-4. In the Admin app, open Settings > Mailer and send a test email. A wrong key or an unverified
+5. In the Admin app, open Settings > Mailer and send a test email. A wrong key or an unverified
    domain only shows up when Resend is called, so this is the way to check the setup.
 
 ## Environment variables
