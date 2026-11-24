@@ -24,8 +24,8 @@
         "variables": ["6.6.0"]
       },
       {
-        "text": "Remove %s and its import from %s; this extension replaces it.",
-        "variables": ["<MailerSmtp />", "webiny.config.tsx"]
+        "text": "Remove %s from %s; this extension replaces it.",
+        "variables": ["<Api.Mailer.Smtp />", "webiny.config.tsx"]
       },
       {
         "text": "Set %s to a sender verified in SES, then deploy the API.",

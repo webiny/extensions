@@ -23,10 +23,10 @@ credentials on its own. Nothing secret goes into settings, environment variables
    yarn webiny extension mailer/ses
    ```
 
-2. In `webiny.config.tsx`, render `<SesMailer />` in place of `<MailerSmtp />`. Installing the
+2. In `webiny.config.tsx`, render `<SesMailer />` in place of `<Api.Mailer.Smtp />`. Installing the
    extension adds `<SesMailer />` and the `@aws-sdk/client-sesv2` dependency; remove
-   `<MailerSmtp />` and its import yourself. If you keep both, SES is used while it is configured
-   and SMTP is the fallback.
+   `<Api.Mailer.Smtp />` yourself. If you keep both, SES is used while it is configured and SMTP is
+   the fallback.
 
 3. Set the sender. It must belong to the verified identity:
 

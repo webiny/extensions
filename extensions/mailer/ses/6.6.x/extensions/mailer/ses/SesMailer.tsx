@@ -4,7 +4,7 @@ import { Infra } from "webiny/extensions";
 
 /**
  * Sends Webiny's mail (password reset codes, workflow notifications, the test email) through
- * Amazon SES. Render it in place of `<MailerSmtp />`.
+ * Amazon SES. Render it in place of `<Api.Mailer.Smtp />`.
  *
  * No stored credentials: on AWS the deploy lets the API functions' IAM role send as the sender,
  * and the AWS SDK uses that role. Configured with environment variables, read when mail is sent
