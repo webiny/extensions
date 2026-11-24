@@ -20,9 +20,9 @@ It calls Resend's HTTP API with `fetch`, so it adds no dependencies to the proje
    yarn webiny extension mailer/resend
    ```
 
-2. In `webiny.config.tsx`, render `<ResendMailer />` in place of `<MailerSmtp />`. Installing the
-   extension adds `<ResendMailer />`; remove `<MailerSmtp />` and its import yourself. If you keep
-   both, Resend is used while it is configured and SMTP is the fallback.
+2. Installing the extension adds `<ResendMailer />` to `webiny.config.tsx`. Nothing has to
+   be removed: Resend is used while it is configured, and the SMTP transport that every Webiny
+   project has is the fallback.
 
 3. Set the API key and the sender. The sender must be on the verified domain:
 

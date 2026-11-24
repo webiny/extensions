@@ -19,9 +19,9 @@ It calls SendGrid's v3 Mail Send API with `fetch`, so it adds no dependencies to
    yarn webiny extension mailer/sendgrid
    ```
 
-2. In `webiny.config.tsx`, render `<SendGridMailer />` in place of `<MailerSmtp />`. Installing
-   the extension adds `<SendGridMailer />`; remove `<MailerSmtp />` and its import yourself. If you
-   keep both, SendGrid is used while it is configured and SMTP is the fallback.
+2. Installing the extension adds `<SendGridMailer />` to `webiny.config.tsx`. Nothing has to
+   be removed: SendGrid is used while it is configured, and the SMTP transport that every Webiny
+   project has is the fallback.
 
 3. Set the API key and the sender. The sender must be a verified Sender Identity:
 
