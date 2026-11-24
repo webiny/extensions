@@ -1,10 +1,10 @@
-import { MailTransport, MailTransportFactory } from "webiny/api/mailer";
+import { MailTransport } from "webiny/api/mailer";
 
-const TRANSPORT_NAME = "Resend";
+export const RESEND_TRANSPORT_NAME = "Mailer/ResendTransport";
 
 const RESEND_EMAILS_URL = "https://api.resend.com/emails";
 
-interface ResendConfig {
+export interface ResendConfig {
     apiKey: string;
     from: string;
     replyTo?: string;
@@ -16,10 +16,10 @@ const getAddress = (sender: string) => {
     return match ? match[1] : sender.trim();
 };
 
-class ResendMailTransport implements MailTransport.Interface {
-    readonly name = TRANSPORT_NAME;
+export class ResendMailTransport implements MailTransport.Interface {
+    public readonly name = RESEND_TRANSPORT_NAME;
 
-    constructor(private config: ResendConfig) {}
+    constructor(private readonly config: ResendConfig) {}
 
     async send(params: MailTransport.SendParams) {
         // An explicit sender wins, as with the SMTP transport.
@@ -30,7 +30,10 @@ class ResendMailTransport implements MailTransport.Interface {
          * Resend requires `to`. Workflow notifications only set `bcc`, so those are addressed to
          * the sender, the way a BCC-only message usually is.
          */
-        const to = params.to?.length ? params.to : [getAddress(from)];
+        let to = params.to;
+        if (!to?.length) {
+            to = [getAddress(from)];
+        }
 
         try {
             const response = await fetch(RESEND_EMAILS_URL, {
@@ -65,43 +68,12 @@ class ResendMailTransport implements MailTransport.Interface {
             }
 
             return { result: body?.id ?? null, error: null };
-        } catch (ex: any) {
+        } catch (ex) {
             // The request did not complete: DNS, connection or a timeout.
             return {
                 result: null,
-                error: {
-                    message: ex.message,
-                    code: "RESEND_REQUEST_FAILED",
-                    data: {}
-                }
+                error: { message: ex.message, code: "RESEND_REQUEST_FAILED", data: {} }
             };
         }
     }
 }
-
-class ResendMailTransportFactoryImpl implements MailTransportFactory.Interface {
-    readonly name = TRANSPORT_NAME;
-
-    /*
-     * Configured when WEBINY_API_RESEND_API_KEY and WEBINY_API_RESEND_FROM are both set. Otherwise
-     * this returns null and the mailer falls back to SMTP, if its settings exist.
-     */
-    async createTransport() {
-        const apiKey = process.env.WEBINY_API_RESEND_API_KEY;
-        const from = process.env.WEBINY_API_RESEND_FROM;
-        if (!apiKey || !from) {
-            return null;
-        }
-
-        return new ResendMailTransport({
-            apiKey,
-            from,
-            replyTo: process.env.WEBINY_API_RESEND_REPLY_TO || undefined
-        });
-    }
-}
-
-export default MailTransportFactory.createImplementation({
-    implementation: ResendMailTransportFactoryImpl,
-    dependencies: []
-});
