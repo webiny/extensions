@@ -19,6 +19,10 @@
         "variables": ["6.6.0"]
       },
       {
+        "text": "Remove %s and its import from %s; this extension replaces it.",
+        "variables": ["<MailerSmtp />", "webiny.config.tsx"]
+      },
+      {
         "text": "Set %s and %s, then deploy the API.",
         "variables": ["WEBINY_API_SENDGRID_API_KEY", "WEBINY_API_SENDGRID_FROM"]
       },
