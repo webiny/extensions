@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/extension.schema.json",
+  "name": "mailer-sendgrid",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "SendGridMailer",
+        "path": "./extensions/mailer/sendgrid/SendGridMailer.js"
+      }
+    ],
+    "component": {
+      "name": "SendGridMailer"
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Requires Webiny %s or newer.",
+        "variables": ["6.6.0"]
+      },
+      {
+        "text": "Remove %s and its import from %s; this extension replaces it.",
+        "variables": ["<MailerSmtp />", "webiny.config.tsx"]
+      },
+      {
+        "text": "Set %s and %s, then deploy the API.",
+        "variables": ["WEBINY_API_SENDGRID_API_KEY", "WEBINY_API_SENDGRID_FROM"]
+      },
+      {
+        "text": "Learn more about the extension in %s.",
+        "variables": ["extensions/mailer/sendgrid/README.md"]
+      }
+    ]
+  }
+}

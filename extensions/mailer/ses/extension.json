@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/extension.schema.json",
+  "name": "mailer-ses",
+  "webinyConfigTsx": {
+    "imports": [
+      {
+        "specifier": "SesMailer",
+        "path": "./extensions/mailer/ses/SesMailer.js"
+      }
+    ],
+    "component": {
+      "name": "SesMailer"
+    }
+  },
+  "packageJson": {
+    "dependencies": {
+      "@aws-sdk/client-sesv2": "^3.1175.0"
+    }
+  },
+  "additionalNotes": {
+    "messages": [
+      {
+        "text": "Requires Webiny %s or newer.",
+        "variables": ["6.6.0"]
+      },
+      {
+        "text": "Remove %s and its import from %s; this extension replaces it.",
+        "variables": ["<MailerSmtp />", "webiny.config.tsx"]
+      },
+      {
+        "text": "Set %s to a sender verified in SES, then deploy the API.",
+        "variables": ["WEBINY_API_SES_FROM"]
+      },
+      {
+        "text": "Learn more about the extension in %s.",
+        "variables": ["extensions/mailer/ses/README.md"]
+      }
+    ]
+  }
+}
